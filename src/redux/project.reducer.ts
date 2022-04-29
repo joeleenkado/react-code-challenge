@@ -1,3 +1,4 @@
+import { AnyAction } from '@reduxjs/toolkit';
 import { Project } from '../types/Project.type';
 
 interface ProjectState {
@@ -16,19 +17,14 @@ const initialState: ProjectState = {
     ],
 };
 
-enum ProjectActionType {
+export enum ProjectActionType {
     ADD_PROJECT = 'ADD_PROJECT',
 };
 
-interface ProjectAction {
-    type: String,
-    payload: Project,
-};
-
-const projectReducer = (state: ProjectState = initialState, action: ProjectAction) => {
+const projectReducer = (state: ProjectState = initialState, action: AnyAction) => {
     switch (action.type) {
         case ProjectActionType.ADD_PROJECT:
-            const project = Object.assign({}, (action as ProjectAction).payload);
+            const project = Object.assign({}, (action as AnyAction).payload);
             return { ...state, projects: [...state.projects, project] };
         default:
             return state;
