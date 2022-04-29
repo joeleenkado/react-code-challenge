@@ -1,6 +1,13 @@
 # React Code Challenge
 
-The goal of this code challenge is to convert the class based component `OldProjectList.js` to a function based component `ProjectList.tsx`.
+The goal of this code challenge is to convert the class based component `OldProjectList.js` to a function based component `ProjectList.tsx`. There is no server for this code challenge, only front end code.
+
+To get started:
+
+```
+npm install
+npm start
+```
 
 ## Task List
 
