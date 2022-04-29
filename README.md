@@ -11,7 +11,7 @@ npm start
 
 ## Task List
 
-The only file you will need to modify for these two tasks is the `ProjectList.tsx` file.
+The only file you will need to modify for these two tasks is the `ProjectList.tsx` file. The first two tasks are intended to take 30 - 90 minutes total to complete. Please do not spend more than 2 hours on this.
 
 - [ ] Convert to function component with hooks
 - [ ] Use redux instead of local state for the project list (editing project can remain in state)
