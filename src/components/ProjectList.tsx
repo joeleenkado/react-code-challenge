@@ -67,7 +67,7 @@ console.log('projectReducerff:', reduxProjects[0].id)
                    { reduxProjects.length < 1 ? null :
                        reduxProjects.map((project) => 
 // console.log('jhjh')
-                        
+  !project.isActive === true ? null :                       
                         <div style={{borderStyle: 'solid', margin: 10 }}>
                             <p>ID: {project.id}</p> 
                             <p>Name: {project.projectName}</p> 
