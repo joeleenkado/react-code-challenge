@@ -19,14 +19,22 @@ const initialState: ProjectState = {
 
 export enum ProjectActionType {
     ADD_PROJECT = 'ADD_PROJECT',
+    CLEAR_LIST = 'CLEAR_LIST'
 };
 
 const projectReducer = (state: ProjectState = initialState, action: AnyAction) => {
     switch (action.type) {
         case ProjectActionType.ADD_PROJECT:
             const project = Object.assign({}, (action as AnyAction).payload);
-            return { ...state, projects: [...state.projects, project] };
-        default:
+            return { ...state, projects: [...state.projects, project] }
+            // case ProjectActionType.CLEAR_LIST:
+            //     const project = Object.assign({}, (action as AnyAction).payload);
+            //     return { ...state, projects: [...state.projects, project] };
+  case ProjectActionType.CLEAR_LIST:
+  const clearProject = Object.assign({}, (action as AnyAction).type)
+            return  { ...state, projects: ['']}
+       
+            default:
             return state;
     }
 };

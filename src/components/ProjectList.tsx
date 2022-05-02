@@ -52,20 +52,31 @@ console.log('projectReducerff:', reduxProjects[0].id)
                     setNewId('')
                     setNewProjectName('')
                     setNewIsActive("true")
+                    
                     }}>
                         Submit
                     </button>
+                    <button onClick={(e) =>
+                        dispatch(
+                            {type: "CLEAR_LIST"}
+                            )
+                        }>CLEAR LIST</button>
                 </div>
 {/* {console.log('iiiii')} */}
-                {
+                
+                   { reduxProjects.length < 1 ? null :
                        reduxProjects.map((project) => 
 // console.log('jhjh')
                         
                         <div style={{borderStyle: 'solid', margin: 10 }}>
                             <p>ID: {project.id}</p> 
                             <p>Name: {project.projectName}</p> 
-                        </div>)
-}
+                        </div>
+                        
+                        
+                        )
+    
+                   }
                              
         </>
     );
