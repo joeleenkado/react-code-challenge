@@ -10,6 +10,8 @@ const ProjectList = () => {
 const [newId, setNewId] = useState('');
 const [newProjectName, setNewProjectName]  = useState('')
 const [newIsActive, setNewIsActive] = useState('true');   
+const [inactive, toggleInactive] = useState(false)
+
 const dispatch = useDispatch()
 
 const newProject = {
@@ -69,8 +71,17 @@ console.log('projectReducerff:', reduxProjects[0].id)
 // console.log('jhjh')
   !project.isActive === true ? null :                       
                         <div style={{borderStyle: 'solid', margin: 10 }}>
+                           
+                           <label>
+                               inactive?
+                            <input type='checkbox' value='true'
+                            onChange={e => toggleInactive(!inactive)}
+                            
+                            ></input>
+                            </label>
                             <p>ID: {project.id}</p> 
                             <p>Name: {project.projectName}</p> 
+                      
                         </div>
                         
                         
