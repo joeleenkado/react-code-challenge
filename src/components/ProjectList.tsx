@@ -1,25 +1,36 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect
+} from "react";
+import { useDispatch } from "react-redux";
+// import ReactDOM from "react-dom"
+import store from "../redux/store";
+import { RootState } from "../redux/store";
+import projectReducer from "../redux/project.reducer";
 
 const ProjectList = () => {
 const [newId, setNewId] = useState('');
 const [newProjectName, setNewProjectName]  = useState('')
-const [newIsActive, setNewIsActive] = useState(true);   
+const [newIsActive, setNewIsActive] = useState('true');   
+const dispatch = useDispatch()
 
 const newProject = {
         id: newId,
         projectName: newProjectName,
-        isActive: newIsActive,
-    },
-    projects = [
+        isActive: JSON.parse(newIsActive)
+    }
+   const projects = [
         {
             id: '1',
             projectName: 'Demo Project',
             isActive: true,
-        }
+        },
     ]
-
+    const reduxProjects = store.getState().projects.projects
+    useEffect(() => {},)
+console.log('projectReducerff:', reduxProjects[0].id)
     return (
         <>
+        STORE: {JSON.stringify(store.getState())}
+        {/* ROOTSTATE: {JSON.stringify(RootState)} */}
             <h2>Function Compoent with Hooks and Redux</h2>
             <div style={{ padding: 20 }}>
                     ID: <input value={newId} onChange={(e) => setNewId( e.target.value)} />
@@ -28,29 +39,34 @@ const newProject = {
                     <br />
                     Active:
                     <select name="active" id="active" value={newIsActive} onChange={(e) => setNewIsActive( e.target.value)}>
-                        <option value="true">Yes</option>
-                        <option value="false">No</option>
+                        <option value='true'>Yes</option>
+                        <option value='false'>No</option>
                     </select>
                     <button onClick={() => {
+                        console.log('newProject:', newProject)
+                     dispatch({type: "ADD_PROJECT", payload: newProject})
+                     
+                     
                         projects.push(newProject)
+                        console.log('projects:', projects)
                     setNewId('')
                     setNewProjectName('')
-                    setNewIsActive(true)
-
-                    
+                    setNewIsActive("true")
                     }}>
                         Submit
                     </button>
                 </div>
-
+{/* {console.log('iiiii')} */}
                 {
-                    projects.map(project => (
+                       reduxProjects.map((project) => 
+// console.log('jhjh')
+                        
                         <div style={{borderStyle: 'solid', margin: 10 }}>
-                            <p>ID: {project.id}</p>
-                            <p>Name: {project.projectName}</p>
-                        </div>
-                    ))
-                }     
+                            <p>ID: {project.id}</p> 
+                            <p>Name: {project.projectName}</p> 
+                        </div>)
+}
+                             
         </>
     );
 }
